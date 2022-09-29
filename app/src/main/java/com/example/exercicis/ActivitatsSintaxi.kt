@@ -83,6 +83,9 @@ fun printReverseAnyList(l: List<Any>)
 fun printReverseAnyMatrix(m: List<List<Any>>)
 {
     for (i in m.size-1 downTo 0) {
-        printReverseAnyList(m[i])
+        for (j in m.size-1 downTo 1) {
+            print("${m[i][j]}, ")
+        }
+        print("${m[i].first()}\n")
     }
 }

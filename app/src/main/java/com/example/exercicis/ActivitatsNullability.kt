@@ -1,6 +1,5 @@
 package com.example.exercicis
 
-import kotlin.random.Random
 
 fun main()
 {
@@ -61,7 +60,7 @@ fun variableTypes()
     l2[2] + 3       // 5
 }
 
-// 2. Esciu una funció que donats dos Int?, en retorni la suma. Els parametres nuls valen 0.
+// 2. Escriu una funció que donats dos Int?, en retorni la suma. Els parametres nuls valen 0.
 fun nullSafetySum(a: Int?, b: Int?) : Int
 {
     return a?.plus(b ?: 0) ?: (b ?: 0)
@@ -78,7 +77,7 @@ fun nullSafetyAverage(list: List<Int?>?): Double
     var size = 0
 
     for (e in list) {
-        if (e != null){
+        if (e != null) {
             sum += e
             ++size
         }
@@ -128,7 +127,7 @@ fun replaceNulls(matrix: List<List<Int?>>): List<List<Int>>
 
     for (i in 0..matrix.size-1) {
         for (j in 0 .. matrix[i].size-1) {
-            randomizedMatrix[i][j] = matrix[i][j] ?: Random.Default.nextInt()
+            randomizedMatrix[i][j] = matrix[i][j] ?: (-10..10).random()
         }
     }
 
