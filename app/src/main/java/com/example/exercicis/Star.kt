@@ -3,12 +3,14 @@ package com.example.exercicis
 class Star(name: String,
            distanceToEarth: Double,
            isVisibleToNakedEye: Boolean,
+           positionInSky: Vector3,
            var todaySurfaceTemperature: Double,
-           val coreTemperature: Double,
+           var coreTemperature: Double,
            val belongsTo: Galaxy?)
     : CelestialBody(name,
                     distanceToEarth,
-                    isVisibleToNakedEye)
+                    isVisibleToNakedEye,
+                    positionInSky)
 {
     val orbitingPlanets: ArrayList<CelestialBody>
 
@@ -18,18 +20,18 @@ class Star(name: String,
     }
 
 
-    override fun printName()
+    public override fun printName()
     {
         print("Star name: ")
         super.printName()
     }
 
-    fun countNumberOfPlanetsOnOrbit() : Int
+    public fun countNumberOfPlanetsOnOrbit() : Int
     {
         return orbitingPlanets.size
     }
 
-    fun addPlanetToOrbit(planet: CelestialBody)
+    public fun addPlanetToOrbit(planet: CelestialBody)
     {
         orbitingPlanets.add(planet)
     }

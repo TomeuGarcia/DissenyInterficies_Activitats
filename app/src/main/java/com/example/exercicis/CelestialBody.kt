@@ -10,17 +10,16 @@ const val LIGHT_SPEED: Double = 300000000.0
 
 open class CelestialBody(protected val name: String,
                     var distanceToEarth: Double,
-                    val isVisibleToNakedEye: Boolean)
+                    val isVisibleToNakedEye: Boolean,
+                    var positionInSky: Vector3)
 {
-    var positionInSky: Vector3
-
     init
     {
         positionInSky = Vector3(0.0f, 0.0f, 0.0f)
     }
 
 
-    open fun printName()
+    public open fun printName()
     {
         print(name)
     }

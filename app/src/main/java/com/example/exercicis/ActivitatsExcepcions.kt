@@ -43,16 +43,12 @@ fun catchExceptionDangerousCalcA() : Int {
 }
 
 // b. Fes una altra funció que cridi aquesta tantes vegades com faci falta fins que el resultat
-//    d’aquesta funció no sigui una Excepció.
+//    d’aquesta funció NO sigui una Excepció.
 fun catchExceptionDangerousCalcB() : Int {
-    println("Successful results: ")
-
-    try {
-        while (true) {
-            println(makeSomeDangerousCalc())
-        }
+    return try {
+        makeSomeDangerousCalc()
     } catch(e: java.lang.ArithmeticException) {
-        return -1
+        catchExceptionDangerousCalcB()
     }
 }
 
