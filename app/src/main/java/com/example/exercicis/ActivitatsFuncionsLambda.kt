@@ -11,7 +11,7 @@ fun main()
     println(productOfPairs(listOf(2,2,3,4)));
 
     println("\nActivitat 3");
-    println(powersOf2(65.0))
+    println(powersOf2(127.0))
 
     println("\nActivitat 4");
     val l = listOf(1,2,3,6)
@@ -32,9 +32,9 @@ fun main()
     println(sumLists(listOf(1,1,2,2), listOf(10,11,12,13)));
 
     println("\nActivitat 8");
-    println(anonymousMathOperation(3, 4, lambdaAdd))
-    println(anonymousMathOperation(3, 4, lambdaMult))
-    println(anonymousMathOperation(3, 4, lambdaPow))
+    println(anonymousMathOperation(3, 4, { a, b -> (a+b).toDouble()} ))
+    println(anonymousMathOperation(3, 4, { a, b -> (a*b).toDouble()} ))
+    println(anonymousMathOperation(3, 4, { a, b -> (a.toDouble().pow(b))} ))
 }
 
 
@@ -42,7 +42,7 @@ fun main()
 fun powers(list: List<Double>, power: Int): List<Double>
 {
     return list.map{
-        it.pow(power.toDouble())
+        it.pow(power)
     }
 }
 
@@ -60,10 +60,10 @@ fun productOfPairs(list: List<Int>): Double
 fun powersOf2(limit: Double): List<Double>
 {
     val list = ArrayList<Double>()
-    val max = (kotlin.math.log(limit, 2.0) / kotlin.math.log(2.0, 2.0)).toInt()
+    val max = kotlin.math.log2(limit).toInt() +1
 
     repeat(max){
-        list.add(2.0.pow(it+1))
+        list.add(2.0.pow(it))
     }
 
     return list
@@ -83,6 +83,8 @@ fun findInsert(orderedList: List<Int>, newNumber: Int): Int
 //    mateixos elements en la mateixa posició). Podeu fer servir la capçelera que preferiu.
 fun <E> equals(l1: List<E>, l2: List<E>): Boolean
 {
+    if (l1.size != l2.size) return false
+
     l1.zip(l2){ element1, element2 ->
         if (element1 != element2) return false
     }
@@ -94,20 +96,12 @@ fun <E> equals(l1: List<E>, l2: List<E>): Boolean
 //    repetits). Podeu fer servir la capçelera que preferiu.
 fun <E> similar(l1: List<E>, l2: List<E>): Boolean
 {
-    l1.forEach { it1 ->
-        var found = false
-        l2.forEach{ it2 ->
-            if (it1 == it2) found = true
-        }
-        if (!found) return false
+    l1.forEach { element1 ->
+        if (!l2.any{it == element1}) return false
     }
 
-    l2.forEach { it2 ->
-        var found = false
-        l1.forEach{ it1 ->
-            if (it1 == it2) found = true
-        }
-        if (!found) return false
+    l2.forEach { element2 ->
+        if (!l1.any{it == element2}) return false
     }
 
     return true
@@ -128,16 +122,4 @@ fun sumLists(l1: List<Int>, l2: List<Int>): List<Int>
 fun anonymousMathOperation(a: Int, b: Int, operation: (Int, Int) -> Double): Double
 {
     return operation(a, b)
-}
-
-val lambdaAdd: (Int, Int) -> Double = { a, b ->
-    (a + b).toDouble()
-}
-
-val lambdaMult: (Int, Int) -> Double = { a, b ->
-    (a * b).toDouble()
-}
-
-val lambdaPow: (Int, Int) -> Double = { a, b ->
-    a.toDouble().pow(b.toDouble())
 }

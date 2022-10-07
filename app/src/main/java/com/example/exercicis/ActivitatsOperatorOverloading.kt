@@ -17,18 +17,18 @@ fun main()
     println(false*false)
 
     println("\nActivitat 2")
-    val a = DataClass(3.0, 2f, 1);
-    val b = DataClass(5.0, 1f, 5);
+    val a = MyDataClass(3.0, 2f, 1);
+    val b = MyDataClass(5.0, 1f, 5);
     println(a)
     println(a < 5.0)
     println(a > 5.0)
     println(a >= 1.0)
     println(a + b)
 
-    val dataClasses = listOf(DataClass(1.0, 1f, 1),
-                             DataClass(2.0, 2f, 2),
-                             DataClass(3.0, 3f, 3),
-                             DataClass(4.0, 4f, 4))
+    val dataClasses = listOf(MyDataClass(1.0, 1f, 1),
+                             MyDataClass(2.0, 2f, 2),
+                             MyDataClass(3.0, 3f, 3),
+                             MyDataClass(4.0, 4f, 4))
     val ints = listOf(10, 20, 30, 40)
     println(agrupa(dataClasses, ints))
 
@@ -52,15 +52,11 @@ operator fun Boolean.times(other: Boolean) : Boolean
 // 2. Implementa una data class que emmagatzemi com a mínim 3 dades, una de les quals
 //    ha de ser un Double.
 
-class DataClass(var data1: Double,
-                var data2: Float,
-                var data3: Int)
+data class MyDataClass(var data1: Double,
+                       var data2: Float,
+                       var data3: Int)
 {
     // a. Comprova que el print() imprimeix diferent que si no fos una data class.
-//    operator fun print(): String
-//    {
-//        return data1.toString()
-//    }
 
     // b. Fes overload de l’operator compareTo() , que compari el una variable numerica
     //    pertanyent a la classe.
@@ -73,14 +69,14 @@ class DataClass(var data1: Double,
 
     // c. Fes overload de l’operator plus(), per tal que aplicat a dos objectes d’aquesta
     //    classe, retorni un nou objecte random.
-    operator fun plus(other: DataClass) : DataClass
+    operator fun plus(other: MyDataClass) : MyDataClass
     {
-        return DataClass((0..1).random().toDouble(),
+        return MyDataClass((0..1).random().toDouble(),
                          (0..1).random().toFloat(),
                          (0..1).random())
     }
 
-    operator fun plus(otherInt: Int) : Pair<DataClass, Int>
+    operator fun plus(otherInt: Int) : Pair<MyDataClass, Int>
     {
         return Pair(this, otherInt)
     }
@@ -89,9 +85,9 @@ class DataClass(var data1: Double,
 
 // d. Implementa una funció que donada una llista d’elements d’aquesta classe i una
 //    llista d’enters, els agrupi en Pair<T, Int>
-fun agrupa(obj: List<DataClass>, count: List<Int>): List<Pair<DataClass, Int>>
+fun agrupa(obj: List<MyDataClass>, count: List<Int>): List<Pair<MyDataClass, Int>>
 {
-    val grouped = ArrayList<Pair<DataClass, Int>>()
+    val grouped = ArrayList<Pair<MyDataClass, Int>>()
     obj.zip(count) { element1, element2 ->
         grouped.add(element1 + element2)
     }
