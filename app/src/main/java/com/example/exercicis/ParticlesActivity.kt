@@ -20,22 +20,22 @@ class ParticlesActivity : AppCompatActivity() {
     private fun initParticles()
     {
         val particles = listOf<ParticleData>(
-            ParticleData("Quark Up", ParticleData.ParticleFamilies.FAMILY_1),
-            ParticleData("Quark Charm", ParticleData.ParticleFamilies.FAMILY_1),
-            ParticleData("Quark Top", ParticleData.ParticleFamilies.FAMILY_1),
-            ParticleData("Quark Down", ParticleData.ParticleFamilies.FAMILY_1),
-            ParticleData("Quark Strange", ParticleData.ParticleFamilies.FAMILY_1),
-            ParticleData("Quark Bottom", ParticleData.ParticleFamilies.FAMILY_1),
-            ParticleData("Electron", ParticleData.ParticleFamilies.FAMILY_2),
-            ParticleData("Muon", ParticleData.ParticleFamilies.FAMILY_2),
-            ParticleData("Tau", ParticleData.ParticleFamilies.FAMILY_2),
-            ParticleData("Electron neutrino", ParticleData.ParticleFamilies.FAMILY_2),
-            ParticleData("Tau neutrino", ParticleData.ParticleFamilies.FAMILY_2),
-            ParticleData("Gluon", ParticleData.ParticleFamilies.FAMILY_3),
-            ParticleData("Photon", ParticleData.ParticleFamilies.FAMILY_3),
-            ParticleData("Z boson", ParticleData.ParticleFamilies.FAMILY_3),
-            ParticleData("W boson", ParticleData.ParticleFamilies.FAMILY_3),
-            ParticleData("Higgs", ParticleData.ParticleFamilies.FAMILY_4)
+            ParticleData("Quark Up", ParticleData.ParticleFamilies.QUARKS),
+            ParticleData("Quark Charm", ParticleData.ParticleFamilies.QUARKS),
+            ParticleData("Quark Top", ParticleData.ParticleFamilies.QUARKS),
+            ParticleData("Quark Down", ParticleData.ParticleFamilies.QUARKS),
+            ParticleData("Quark Strange", ParticleData.ParticleFamilies.QUARKS),
+            ParticleData("Quark Bottom", ParticleData.ParticleFamilies.QUARKS),
+            ParticleData("Electron", ParticleData.ParticleFamilies.LEPTONS),
+            ParticleData("Muon", ParticleData.ParticleFamilies.LEPTONS),
+            ParticleData("Tau", ParticleData.ParticleFamilies.LEPTONS),
+            ParticleData("Electron neutrino", ParticleData.ParticleFamilies.LEPTONS),
+            ParticleData("Tau neutrino", ParticleData.ParticleFamilies.LEPTONS),
+            ParticleData("Gluon", ParticleData.ParticleFamilies.GAUGE_BOSONS),
+            ParticleData("Photon", ParticleData.ParticleFamilies.GAUGE_BOSONS),
+            ParticleData("Z boson", ParticleData.ParticleFamilies.GAUGE_BOSONS),
+            ParticleData("W boson", ParticleData.ParticleFamilies.GAUGE_BOSONS),
+            ParticleData("Higgs", ParticleData.ParticleFamilies.SCALAR_BOSONS)
         )
 
         binding.particlesRecycleView.adapter = ParticlesAdapter(particles)
