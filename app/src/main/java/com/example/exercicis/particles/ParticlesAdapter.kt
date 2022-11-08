@@ -1,4 +1,4 @@
-package com.example.exercicis
+package com.example.exercicis.particles
 
 import android.graphics.Color
 import android.view.LayoutInflater
